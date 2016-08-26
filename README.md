@@ -1,6 +1,11 @@
-# ng2-file-drop
-
 ## Build Status
+
+[![npm version](https://badge.fury.io/js/ng2-file-drop.svg)](https://badge.fury.io/js/ng2-file-drop)
+
+**Master Branch**
+
+[![Build Status](https://travis-ci.org/leewinder/ng2-file-drop.svg?branch=master)](https://travis-ci.org/leewinder/ng2-file-drop) 
+[![Dependency Status](https://dependencyci.com/github/leewinder/ng2-file-drop/badge)](https://dependencyci.com/github/leewinder/ng2-file-drop)
 
 **Develop Branch**
 
@@ -12,4 +17,302 @@
 
 An Angular 2 module for simple desktop file drag and drop with automatic file validation and dynamic style adjustment.
 
-Contains no dependancies except Angular 2 and those packages required by Angular 2.  Currently built against Angular 2 RC 5.
+## Dependancies
+Currently built against Angular 2 RC 5.
+
+ng2-file-drop has the following additional dependancies
+- [TsLerp](https://www.npmjs.com/package/tslerp): Typescript library for lerping single and multi-sample data sets over time
+
+<br>
+
+## Installation
+1. Add the package to your 'dependencies' list in `package.json` and run `npm install`
+
+  `"ng2-file-drop": "^0.0.1"`
+  
+  Optionally, you can manually install the package using the npm command line
+
+  `npm install ng2-file-drop --save`
+  
+2. Add ng2-dynamic-dialog to both your `map` and `packages` structures in `systemjs.config.js`
+
+  ```javascript
+  var map = {
+    ...
+    'tslerp': 'node_modules/tslerp',
+    'ng2-file-drop': 'node_modules/ng2-file-drop'
+  };
+  ```
+  
+  ```javascript
+  var packages = {
+    ...
+    'tslerp': { main: 'index.js', defaultExtension: 'js' },
+    'ng2-file-drop': { main: 'index.js', defaultExtension: 'js' },
+  };
+  ```
+  
+3. Optionally, add the `rootDir` option to `tsconfig.json` to make sure TypeScript's default root path algorithm doesn't pull in the `node_modules` folder
+
+<br>
+
+## Usage
+
+All the examples shown below are taken from the [samples application](https://github.com/leewinder/ng2-file-drop/tree/master/samples).
+
+### Building and Running the Sample Application
+Check out the repository, browse to the './samples' folder and run `npm install` to install all the required dependancies.
+
+**Note**: Running `npm install` on the sample project requires that Python 2.7.x is available on the command line as it runs a couple of Python scripts to correctly set up the npm_modules folder.
+
+ng2-file-drop is developed in [Visual Studio Code](https://code.visualstudio.com/) so once `npm install` has finished you should be able to open the './samples' folder in VS Code and it will run out of the box (by default it uses lite-server which is installed as part of `npm install`).
+
+If you are not using Visual Studio Code, browse to the './samples' folder and run `tsc` to build the application.  Then open your local server of choice pointing to ./samples as the root directory.
+
+### Importing The 'ng2-file-drop' Module
+To use ng2-file-drop, you need to import the Ng2FileDropModule into the relevent module in your application.  In the sample application this is done in the entry module - [app.module.ts](https://github.com/leewinder/ng2-file-drop/blob/master/samples/src/app/app.module.ts)
+
+```TypeScript
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { Ng2FileDropModule }  from 'ng2-file-drop';
+
+@NgModule({
+    imports: [
+        BrowserModule,
+        Ng2FileDropModule,
+    ],
+
+    bootstrap: [
+        AppComponent,
+    ],
+})
+export class AppModule { }
+```
+
+### Using 'ng2-file-drop'
+
+#### Enabling File Drag
+Enabling File Drag on an element is remarkably simple and can see seen in  [image-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/image-validation).
+
+```TypeScript
+import { Component } from '@angular/core';
+
+@Component({
+  moduleId: module.id,
+  selector: 'my-custom-component',
+    
+  // Simply add the 'ng2FileDrop' selector to the target div
+  template: `<div ng2FileDrop class="custom-component-drop-zone"</div>`
+  
+  // Define the size of the file drop zone
+  styles: [`
+    .custom-component-drop-zone {
+      width: 300px;
+      height: 300px;
+    }
+  `]
+})
+export class MyCustomComponent {
+}
+```
+
+#### Responding To Events
+
+You can specify a set of callbacks that will trigger when a drag event happens, which can be seen in [size-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/size-validation).
+
+The available callbacks are
+- When a file is initially dragged into the target space
+- When a file is dragged out of the target space
+- When a file is dropped and it is _accepted_ by 'ng2-file-drop'
+- When a file is dropped and it is _rejected_ by 'ng2-file-drop'
+
+```TypeScript
+import { Component } from '@angular/core';
+import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
+
+@Component({
+  moduleId: module.id,
+  selector: 'my-custom-component',
+  
+  template: `<!-- my_custom.component.html -->
+             <!-- Specify the callbacks in 'MyCustomComponent' for each event -->
+             <div ng2FileDrop class="custom-component-drop-zone"
+             
+                (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
+                (ng2FileDropFileDropped)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
+                
+             </div>`
+  
+  styles: [`
+    .custom-component-drop-zone {
+      width: 300px;
+      height: 300px;
+    }
+  `]
+})
+export class MyCustomComponent {
+
+  // File being dragged has moved into the drop region
+  private dragFileOverStart() {
+  }
+
+  // File being dragged has moved out of the drop region
+  private dragFileOverEnd() {
+  }
+
+  // File being dragged has been dropped and is valid
+  private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
+  }
+
+  // File being dragged has been dropped and has been rejected
+  private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
+  }
+}
+```
+
+#### Responding to a Dropped File
+Regardless of whether a file is accepted or rejected, you will be provided with a File object via either Ng2FileDropRejectedFile.file or Ng2FileDropAcceptedFile.file, which can be used to load, display, upload or otherwise interact with.
+
+This can be seen in [image-validation.component.ts](https://github.com/leewinder/ng2-file-drop/blob/master/samples/src/app/components/file-drop-samples/image-validation/image-validation.component.ts#L27) which takes the dropped files and displays it in the browser.
+
+```TypeScript
+import { Component } from '@angular/core';
+import { Ng2FileDropAcceptedFile }  from 'ng2-file-drop';
+
+@Component({
+  ...
+})
+export class ImageValidationComponent {
+
+  ...
+
+  // Takes the dropped image and displays it in the image tag
+  private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
+
+      // Load the image in
+      let fileReader = new FileReader();
+      fileReader.onload = () => {
+
+          // Set and show the image
+          this.currentProfileImage = fileReader.result;
+          this.imageShown = true;
+      };
+
+      // Read in the file
+      fileReader.readAsDataURL(acceptedFile.file);
+  }
+}
+```
+
+#### Responding to Rejected Files
+When a file is rejected you can identify the reason for it being rejected in Ng2FileDropRejectedFile.rejectionReason which can take one of the following values
+- Ng2FileDropRejections.None
+- Ng2FileDropRejections.FileType
+- Ng2FileDropRejections.FileSize
+- Ng2FileDropRejections.Unknown
+
+```TypeScript
+import { Component } from '@angular/core';
+import { Ng2FileDropRejectedFile, Ng2FileDropRejections }  from 'ng2-file-drop';
+
+@Component({
+  ...
+})
+export class ImageValidationComponent {
+
+  ...
+
+  // Takes the dropped image and displays it in the image tag
+  private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
+
+    // Respond to the reason for rejection
+    if (rejectedFilerejectionReason === Ng2FileDropRejections.FileType) {
+    } else if (rejectedFilerejectionReason === Ng2FileDropRejections.FileSize) {
+    } else {
+    }
+  }
+}
+```
+
+#### Defining Acceptance Criteria
+It is possible to define a set of criteria for the file to meet before it can be accepted, and if the file doesn't match those criteria it will be returned to the client as a 'Ng2FileDropRejectedFile'.
+
+It is possible to define the following requirements
+- File type (as seen in [image-validation.component.ts](https://github.com/leewinder/ng2-file-drop/blob/master/samples/src/app/components/file-drop-samples/image-validation/image-validation.component.ts#L17))
+- File size (as seen in [size-validation.component.ts](https://github.com/leewinder/ng2-file-drop/blob/master/samples/src/app/components/file-drop-samples/size-validation/size-validation.component.ts#L17))
+
+```TypeScript
+import { Component } from '@angular/core';
+
+@Component({
+  moduleId: module.id,
+  selector: 'my-custom-component',
+  
+  template: `<!-- my_custom.component.html -->
+             <!-- Set criteria for only image types under 1MB in size-->
+             <div ng2FileDrop class="custom-component-drop-zone"
+             
+                [ng2FileDropSupportedFileTypes]="supportedFileTypes"
+                [ng2FileDropMaximumSizeBytes]="maximumFileSizeInBytes"
+                
+                (ng2FileDropFileDropped)="dragFileAccepted($event)"
+             </div>`
+  
+  styles: [`
+    .custom-component-drop-zone {
+      width: 300px;
+      height: 300px;
+    }
+  `]
+})
+export class MyCustomComponent {
+
+  // Required criteria for all files (only image types under 1MB in size)
+  private supportedFileTypes: string[] = ['image/png', 'image/jpeg', 'image/gif'];
+  private maximumFileSizeInBytes: number = 1e+6;
+
+  // File being dragged has been dropped and is valid
+  private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
+    // Any files passed through here will have met the requested criteria
+  }
+}
+```
+
+#### Disabling the Default Style
+By default ng2-file-drop will automatically style the drop zone, highlighting it in blue when hovering, and flashing red when a file is rejected.  You can disable this behaviour as done in [disable-styles](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/disable-styles).
+
+```TypeScript
+import { Component } from '@angular/core';
+
+@Component({
+  moduleId: module.id,
+  selector: 'my-custom-component',
+    
+  // Disable the default style of drop zones
+  template: `<div ng2FileDrop 
+                class="custom-component-drop-zone
+                
+                [ng2FileDropDisableStyles]="true"
+                
+             </div>`
+  
+  // Define the size of the file drop zone
+  styles: [`
+    .custom-component-drop-zone {
+      width: 300px;
+      height: 300px;
+    }
+  `]
+})
+export class MyCustomComponent {
+}
+```
+
+<br>
+
+## Change Log
+
+### 0.0.1
+* Initial release
