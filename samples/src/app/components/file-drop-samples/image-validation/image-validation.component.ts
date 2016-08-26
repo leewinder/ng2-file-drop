@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
 import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
 
@@ -17,13 +17,15 @@ export class ImageValidationComponent {
     private supportedFileTypes: string[] = ['image/png', 'image/jpeg', 'image/gif'];
     /* tslint:enable:no-unused-variable */
 
+    private imageShown: boolean = false;
+    private currentProfileImage: string = 'assets/profile-placeholder.png';
+
     //
     // File being dragged has moved into the drop region
     //
     /* tslint:disable:no-unused-variable */
     private dragFileOverStart() {
         /* tslint:enable:no-unused-variable */
-        console.log('ImageValidationComponent - dragFileOverStart');
     }
 
     //
@@ -32,7 +34,6 @@ export class ImageValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileOverEnd() {
         /* tslint:enable:no-unused-variable */
-        console.log('ImageValidationComponent - dragFileOverEnd');
     }
 
     //
@@ -41,8 +42,18 @@ export class ImageValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
         /* tslint:enable:no-unused-variable */
-        console.log('ImageValidationComponent - dragFileAccepted');
-        console.log(acceptedFile.file);
+
+        // Load the image in
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+
+            // Set and show the image
+            this.currentProfileImage = fileReader.result;
+            this.imageShown = true;
+        };
+
+        // Read in the file
+        fileReader.readAsDataURL(acceptedFile.file);
     }
 
     //
@@ -51,7 +62,5 @@ export class ImageValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
         /* tslint:enable:no-unused-variable */
-        console.log('ImageValidationComponent - dragFileRejected');
-        console.log(rejectedFile.file);
     }
 }
