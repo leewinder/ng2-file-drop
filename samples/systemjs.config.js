@@ -8,6 +8,7 @@
     'app': 'src', // 'dist',
     '@angular': 'node_modules/@angular',
     'rxjs': 'node_modules/rxjs',
+    'tslerp': 'node_modules/tslerp',
     'ng2-file-drop': 'node_modules/ng2-file-drop'
   };
 
@@ -15,6 +16,7 @@
   var packages = {
     'app': { main: 'main.js', defaultExtension: 'js' },
     'rxjs': { defaultExtension: 'js' },
+    'tslerp': { main: 'index.js', defaultExtension: 'js' },
     'ng2-file-drop': { main: 'index.js', defaultExtension: 'js' },
   };
 

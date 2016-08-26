@@ -1,0 +1,43 @@
+.random-file-group {
+
+    margin: 30 auto;
+    padding-top: 30px;
+}
+
+.random-file-limitations-content-group {
+
+    margin: 0 auto;
+
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 30px;
+    border-color: #979797;
+
+    width: 130px;
+    height: 130px;
+
+    text-align: center;
+}
+
+.random-file-limitations-content-instructions {
+
+    position: relative;
+    color: #979797;
+
+    text-align: center;
+
+    font-size: 12px;
+
+    top: 55px;
+    width: 100%;
+}
+
+.random-file-limitations {
+
+    text-align: center;
+    color: #979797;
+
+    font-size: 12px;
+
+    padding-top:5px;
+}

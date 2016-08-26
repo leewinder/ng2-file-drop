@@ -1,0 +1,10 @@
+<div class="profile-picture-group">
+    <div ng2FileDrop 
+    [ng2FileDropSupportedFileTypes]="supportedFileTypes" 
+    (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
+    (ng2FileDropFileDropped)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)" 
+    class="profile-picture-image-group">
+        <p class="profile-picture-image-group-instructions">Drag your profile image here</p>
+    </div>
+    <p class="profile-picture-image-limitations">Profile picture can be no larger than 256 x 256px</p>
+</div>
