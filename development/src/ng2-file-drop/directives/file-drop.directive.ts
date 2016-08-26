@@ -21,7 +21,7 @@ export class FileDropDirective implements OnInit {
     @Output()
     public ng2FileDropHoverEnd: EventEmitter<any> = new EventEmitter<any>();
     @Output()
-    public ng2FileDropFileDropped: EventEmitter<AcceptedFile> = new EventEmitter<AcceptedFile>();
+    public ng2FileDropFileAccepted: EventEmitter<AcceptedFile> = new EventEmitter<AcceptedFile>();
     @Output()
     public ng2FileDropFileRejected: EventEmitter<RejectedFile> = new EventEmitter<RejectedFile>();
 
@@ -130,7 +130,7 @@ export class FileDropDirective implements OnInit {
             // Check if our file is valid or not
             let rejectionReason: RejectionReasons = this.fileService.isFileValid();
             if (rejectionReason === RejectionReasons.None) {
-                this.ng2FileDropFileDropped.emit(new AcceptedFile(fileData));
+                this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
                 if (this.dropZoneStyle !== null) {
                     this.dropZoneStyle.onFileAccepted();
                 }
