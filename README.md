@@ -38,7 +38,7 @@ ng2-file-drop has the following additional dependancies
 
   `npm install ng2-file-drop --save`
   
-2. Add ng2-dynamic-dialog to both your `map` and `packages` structures in `systemjs.config.js`
+2. Add ng2-file-drop to both your `map` and `packages` structures in `systemjs.config.js`
 
   ```javascript
   var map = {
