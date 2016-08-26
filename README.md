@@ -141,7 +141,7 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop
              <div ng2FileDrop class="custom-component-drop-zone"
              
                 (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
-                (ng2FileDropFileDropped)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
+                (ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
                 
              </div>`
   
@@ -257,7 +257,7 @@ import { Component } from '@angular/core';
                 [ng2FileDropSupportedFileTypes]="supportedFileTypes"
                 [ng2FileDropMaximumSizeBytes]="maximumFileSizeInBytes"
                 
-                (ng2FileDropFileDropped)="dragFileAccepted($event)"
+                (ng2FileDropFileAccepted)="dragFileAccepted($event)"
              </div>`
   
   styles: [`
