@@ -14,11 +14,11 @@ export class SizeValidationComponent {
 
     /* tslint:disable:no-unused-variable */
     // Maximum file size in bytes
-    private maximumFileSizeInBytes: number = 1e+6;
+    private maximumFileSizeInBytes: number = 2e+6;
     /* tslint:disable:no-unused-variable */
 
-    private fileName: string = null;
-    private fileSize: number = 0;
+    private fileName: string = 'No file selected';
+    private fileEvent: string = 'No events fired';
 
     //
     // File being dragged has moved into the drop region
@@ -26,7 +26,7 @@ export class SizeValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileOverStart() {
         /* tslint:enable:no-unused-variable */
-        console.log('SizeValidationComponent - dragFileOverStart');
+        this.fileEvent = 'SizeValidationComponent.dragFileOverStart';
     }
 
     //
@@ -35,7 +35,7 @@ export class SizeValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileOverEnd() {
         /* tslint:enable:no-unused-variable */
-        console.log('SizeValidationComponent - dragFileOverEnd');
+        this.fileEvent = 'SizeValidationComponent.dragFileOverEnd';
     }
 
     //
@@ -44,12 +44,8 @@ export class SizeValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileAccepted(acceptedFile: Ng2FileDropAcceptedFile) {
         /* tslint:enable:no-unused-variable */
-        console.log('SizeValidationComponent - dragFileAccepted');
-        console.log(acceptedFile.file);
-
-        // Save the file that was dropped
-        this.fileName = acceptedFile.file.name;
-        this.fileSize = acceptedFile.file.size;
+        this.fileEvent = 'SizeValidationComponent.dragFileAccepted';
+        this.fileName = 'File selected: ' + acceptedFile.file.name;
     }
 
     //
@@ -58,7 +54,6 @@ export class SizeValidationComponent {
     /* tslint:disable:no-unused-variable */
     private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
         /* tslint:enable:no-unused-variable */
-        console.log('SizeValidationComponent - dragFileRejected');
-        console.log(rejectedFile.file);
+        this.fileEvent = 'SizeValidationComponent.dragFileRejected';
     }
 }
