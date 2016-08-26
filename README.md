@@ -17,6 +17,10 @@
 
 An Angular 2 module for simple desktop file drag and drop with automatic file validation and dynamic style adjustment.
 
+<br>
+
+![](https://cloud.githubusercontent.com/assets/1649415/18009234/3c180d48-6ba3-11e6-9f21-c71d3b1f7bd8.gif)
+
 ## Dependancies
 Currently built against Angular 2 RC 5.
 
@@ -91,9 +95,9 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 export class AppModule { }
 ```
 
-### Using 'ng2-file-drop'
+### Enabling File Drag
+![](https://cloud.githubusercontent.com/assets/1649415/18009351/bcc6209c-6ba3-11e6-8c50-190372fe6633.gif)
 
-#### Enabling File Drag
 Enabling File Drag on an element is remarkably simple and can see seen in  [image-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/image-validation).
 
 ```TypeScript
@@ -118,7 +122,8 @@ export class MyCustomComponent {
 }
 ```
 
-#### Responding To Events
+### Responding To Events
+![](https://cloud.githubusercontent.com/assets/1649415/18009474/55532602-6ba4-11e6-9e53-1a9c42f981d9.gif)
 
 You can specify a set of callbacks that will trigger when a drag event happens, which can be seen in [size-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/size-validation).
 
@@ -172,7 +177,9 @@ export class MyCustomComponent {
 }
 ```
 
-#### Responding to a Dropped File
+### Responding to a Dropped File
+![](https://cloud.githubusercontent.com/assets/1649415/18009599/e242c702-6ba4-11e6-82de-1712595983eb.gif)
+
 Regardless of whether a file is accepted or rejected, you will be provided with a File object via either Ng2FileDropRejectedFile.file or Ng2FileDropAcceptedFile.file, which can be used to load, display, upload or otherwise interact with.
 
 This can be seen in [image-validation.component.ts](https://github.com/leewinder/ng2-file-drop/blob/master/samples/src/app/components/file-drop-samples/image-validation/image-validation.component.ts#L27) which takes the dropped files and displays it in the browser.
@@ -206,7 +213,9 @@ export class ImageValidationComponent {
 }
 ```
 
-#### Responding to Rejected Files
+### Responding to Rejected Files
+![](https://cloud.githubusercontent.com/assets/1649415/18009700/52a50c94-6ba5-11e6-9090-5701c470a908.gif)
+
 When a file is rejected you can identify the reason for it being rejected in Ng2FileDropRejectedFile.rejectionReason which can take one of the following values
 - Ng2FileDropRejections.None
 - Ng2FileDropRejections.FileType
@@ -236,7 +245,9 @@ export class ImageValidationComponent {
 }
 ```
 
-#### Defining Acceptance Criteria
+### Defining Acceptance Criteria
+![](https://cloud.githubusercontent.com/assets/1649415/18009522/8b2aacaa-6ba4-11e6-9664-959df4dc4770.gif)
+
 It is possible to define a set of criteria for the file to meet before it can be accepted, and if the file doesn't match those criteria it will be returned to the client as a 'Ng2FileDropRejectedFile'.
 
 It is possible to define the following requirements
@@ -280,7 +291,9 @@ export class MyCustomComponent {
 }
 ```
 
-#### Disabling the Default Style
+### Disabling the Default Style
+![](https://cloud.githubusercontent.com/assets/1649415/18009545/b0b552e0-6ba4-11e6-902e-e25a2a151659.gif)
+
 By default ng2-file-drop will automatically style the drop zone, highlighting it in blue when hovering, and flashing red when a file is rejected.  You can disable this behaviour as done in [disable-styles](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/disable-styles).
 
 ```TypeScript
