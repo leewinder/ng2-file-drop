@@ -1,4 +1,4 @@
-import { RejectionReasons } from './rejection-reasons';
+import { RejectionReasons } from '../properties/rejection-reasons';
 
 //
 // Properties of a rejected file

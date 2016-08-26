@@ -1,11 +1,9 @@
-import { Injectable } from '@angular/core';
-import { RejectionReasons } from '../properties/rejection-reasons'
+import { RejectionReasons } from '../properties/rejection-reasons';
 
 //
 // Tracks and manages a dragged file
 //
-@Injectable()
-export class FileStateService {
+export class FileState {
 
     // Private properties
     private currentObject: DataTransfer = null;

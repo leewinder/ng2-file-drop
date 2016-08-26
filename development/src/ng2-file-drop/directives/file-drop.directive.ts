@@ -1,10 +1,11 @@
-import { Directive, EventEmitter, ElementRef, HostListener, Output, Input, OnInit } from '@angular/core';
+import { Directive, EventEmitter, ElementRef, Renderer, HostListener, Output, Input, OnInit } from '@angular/core';
 
-import { FileStateService } from '../services/file-state.service';
+import { FileState } from '../utilities/file-state';
+import { DropZoneStyle } from '../utilities/drop-zone-style';
 import { RejectionReasons } from '../properties/rejection-reasons';
 
-import { AcceptedFile } from '../properties/accepted-file';
-import { RejectedFile } from '../properties/rejected-file';
+import { AcceptedFile } from '../dropped-files/accepted-file';
+import { RejectedFile } from '../dropped-files/rejected-file';
 
 //
 // Directive to support dragging and dropping and element onto a div
@@ -29,17 +30,24 @@ export class FileDropDirective implements OnInit {
     @Input()
     public ng2FileDropMaximumSizeBytes: number;
 
+    // Keep track of our dropped files
+    private fileService: FileState = new FileState();
+    private dropZoneStyle: DropZoneStyle = null;
+
     //
     // Constructor requires an element reference that instantiated this directive
     //
-    public constructor(private element: ElementRef, private fileService: FileStateService) {
+    public constructor(private element: ElementRef, private renderer: Renderer) {
     }
 
     //
     // Initialisation
     //
     public ngOnInit() {
+
+        // Set our properties
         this.fileService.setExpectedFileProperties(this.ng2FileDropSupportedFileTypes, this.ng2FileDropMaximumSizeBytes);
+        this.dropZoneStyle = new DropZoneStyle(this.element, this.renderer);
     }
 
     //
@@ -59,6 +67,7 @@ export class FileDropDirective implements OnInit {
 
             // Let the client know
             this.ng2FileDropHoverStart.emit();
+            this.dropZoneStyle.onHoverStart();
         }
 
         // Don't propagate
@@ -82,6 +91,7 @@ export class FileDropDirective implements OnInit {
 
             // Let the client know
             this.ng2FileDropHoverEnd.emit();
+            this.dropZoneStyle.onHoverEnd();
         }
 
         // Don't let it continue
@@ -99,6 +109,7 @@ export class FileDropDirective implements OnInit {
 
             // Let the client know
             this.ng2FileDropHoverEnd.emit();
+            this.dropZoneStyle.onHoverEnd();
 
             // Update our data
             this.fileService.currentFile = this.getDataTransferObject(event);
@@ -107,11 +118,13 @@ export class FileDropDirective implements OnInit {
             let fileData: File = this.fileService.getFileData();
 
             // Check if our file is valid or not
-            let rejectionReason : RejectionReasons = this.fileService.isFileValid();
+            let rejectionReason: RejectionReasons = this.fileService.isFileValid();
             if (rejectionReason === RejectionReasons.None) {
                 this.ng2FileDropFileDropped.emit(new AcceptedFile(fileData));
+                this.dropZoneStyle.onFileAccepted();
             } else {
                 this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
+                this.dropZoneStyle.onFileRejected();
             }
 
             // Finished with the file
