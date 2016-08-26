@@ -1,6 +1,6 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop';
+import { Ng2FileDropAcceptedFile }  from 'ng2-file-drop';
 
 @Component({
 
@@ -21,22 +21,6 @@ export class ImageValidationComponent {
     private currentProfileImage: string = 'assets/profile-placeholder.png';
 
     //
-    // File being dragged has moved into the drop region
-    //
-    /* tslint:disable:no-unused-variable */
-    private dragFileOverStart() {
-        /* tslint:enable:no-unused-variable */
-    }
-
-    //
-    // File being dragged has moved out of the drop region
-    //
-    /* tslint:disable:no-unused-variable */
-    private dragFileOverEnd() {
-        /* tslint:enable:no-unused-variable */
-    }
-
-    //
     // File being dragged has been dropped and is valid
     //
     /* tslint:disable:no-unused-variable */
@@ -54,13 +38,5 @@ export class ImageValidationComponent {
 
         // Read in the file
         fileReader.readAsDataURL(acceptedFile.file);
-    }
-
-    //
-    // File being dragged has been dropped and has been rejected
-    //
-    /* tslint:disable:no-unused-variable */
-    private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
-        /* tslint:enable:no-unused-variable */
     }
 }

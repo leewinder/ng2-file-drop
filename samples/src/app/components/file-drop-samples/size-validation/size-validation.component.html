@@ -4,7 +4,9 @@
     (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
     (ng2FileDropFileDropped)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
     class="random-file-limitations-content-group">
-        <p class="random-file-limitations-content-instructions">Drag your file to upload here</p>
+        <p class="random-file-limitations-content-instructions">Drag your file to use here</p>
     </div>
     <p class="random-file-limitations">File uploaded can be no larger than 2Mb</p>
+    <p *ngIf="fileName" class="random-file-limitations">File Selected: {{fileName}}   Size: {{fileSize}} bytes</p>
+    <p *ngIf="!fileName" class="random-file-limitations">No file selected</p>
 </div>

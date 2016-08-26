@@ -17,6 +17,9 @@ export class SizeValidationComponent {
     private maximumFileSizeInBytes: number = 1e+6;
     /* tslint:disable:no-unused-variable */
 
+    private fileName: string = null;
+    private fileSize: number = 0;
+
     //
     // File being dragged has moved into the drop region
     //
@@ -43,6 +46,10 @@ export class SizeValidationComponent {
         /* tslint:enable:no-unused-variable */
         console.log('SizeValidationComponent - dragFileAccepted');
         console.log(acceptedFile.file);
+
+        // Save the file that was dropped
+        this.fileName = acceptedFile.file.name;
+        this.fileSize = acceptedFile.file.size;
     }
 
     //

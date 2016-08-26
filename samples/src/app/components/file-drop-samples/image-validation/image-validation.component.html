@@ -1,11 +1,8 @@
 <div class="profile-picture-section">
-    <div ng2FileDrop
-    [ng2FileDropSupportedFileTypes]="supportedFileTypes"
-    (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
-    (ng2FileDropFileDropped)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
-    class="profile-picture-section-drop-zone">
+    <div ng2FileDrop [ng2FileDropSupportedFileTypes]="supportedFileTypes" (ng2FileDropFileDropped)="dragFileAccepted($event)"
+        class="profile-picture-section-drop-zone">
         <div *ngIf="!imageShown" class=profile-picture-section-request-image-group>
-            <p class="profile-picture-section-request-image-instructions">Drag your profile image here</p>
+            <p class="profile-picture-section-request-image-instructions">Drop a profile picture here</p>
         </div>
         <div *ngIf="imageShown" class=profile-picture-section-request-image-container>
             <img class=profile-picture-section-request-image [src]="currentProfileImage">

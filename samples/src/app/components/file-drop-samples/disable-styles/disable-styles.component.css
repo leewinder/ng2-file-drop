@@ -1,10 +1,10 @@
-.random-file-group {
+.disable-styles-group {
 
     margin: 30 auto;
     padding-top: 15px;
 }
 
-.random-file-limitations-content-group {
+.disable-styles-limitations-content-group {
 
     margin: 0 auto;
 
@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.random-file-limitations-content-instructions {
+.disable-styles-limitations-content-instructions {
 
     position: relative;
     color: #979797;
@@ -32,7 +32,7 @@
     width: 100%;
 }
 
-.random-file-limitations {
+.disable-styles-limitations {
 
     text-align: center;
     color: #979797;

@@ -7,6 +7,7 @@ import { MainPageComponent }  from './components/main-page/main-page.component';
 
 import { ImageValidationComponent }  from './components/file-drop-samples/image-validation/image-validation.component';
 import { SizeValidationComponent }  from './components/file-drop-samples/size-validation/size-validation.component';
+import { DisableStylesComponent }  from './components/file-drop-samples/disable-styles/disable-styles.component';
 
 import { Ng2FileDropModule }  from 'ng2-file-drop';
 
@@ -22,6 +23,7 @@ import { Ng2FileDropModule }  from 'ng2-file-drop';
 
         ImageValidationComponent,
         SizeValidationComponent,
+        DisableStylesComponent,
     ],
 
     bootstrap: [

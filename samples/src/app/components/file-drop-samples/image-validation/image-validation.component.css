@@ -5,7 +5,7 @@
 .profile-picture-section {
 
     margin: 30 auto;
-    padding-top: 30px;
+    padding-top: 15px;
 }
 
 .profile-picture-section-drop-zone {
@@ -14,8 +14,8 @@
 
     border-radius: 30px;
 
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
 }
 
 /*
@@ -42,7 +42,7 @@
 
     font-size: 12px;
 
-    top: 50px;
+    top: 40px;
     width: 100%;
 }
 
