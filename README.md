@@ -327,6 +327,9 @@ export class MyCustomComponent {
 
 ## Change Log
 
+### 0.1.1
+* Updated package requirements to Typescript ^2.0.0 plus related package upgrades
+
 ### 0.1.0
 * Updated Angular dependancy to 2.0.0
 
