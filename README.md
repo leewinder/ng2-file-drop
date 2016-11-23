@@ -32,7 +32,7 @@ ng2-file-drop has the following additional dependancies
 ## Installation
 1. Add the package to your 'dependencies' list in `package.json` and run `npm install`
 
-  `"ng2-file-drop": "^0.1.0"`
+  `"ng2-file-drop": "^0.2.0"`
   
   Optionally, you can manually install the package using the npm command line
 
@@ -326,6 +326,9 @@ export class MyCustomComponent {
 <br>
 
 ## Change Log
+
+### 0.2.0
+* Fixed - Safari Issue: Can't find variable: DragEvent - https://github.com/leewinder/ng2-file-drop/issues/4
 
 ### 0.1.1
 * Updated package requirements to Typescript ^2.0.0 plus related package upgrades
