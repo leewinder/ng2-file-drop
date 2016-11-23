@@ -58,7 +58,7 @@ export class FileDropDirective implements OnInit {
     // Called when the element has content dragged over
     //
     @HostListener('dragover', ['$event'])
-    public onDragOver(event: DragEvent): void {
+    public onDragOver(event: Event): void {
 
         // If we're already in the on-drag, don't bother with this
         if (this.fileService.currentFile === null) {
@@ -84,7 +84,7 @@ export class FileDropDirective implements OnInit {
     // Called when the element has dragged content leave
     //
     @HostListener('dragleave', ['$event'])
-    public onDragLeave(event: DragEvent): void {
+    public onDragLeave(event: Event): void {
 
         // Only bother if we have a file
         if (this.fileService.currentFile !== null) {
@@ -110,7 +110,7 @@ export class FileDropDirective implements OnInit {
     // Called when the element has content dropped
     //
     @HostListener('drop', ['$event'])
-    public onDrop(event: DragEvent): void {
+    public onDrop(event: Event): void {
 
         // Only bother if we have a file
         if (this.fileService.currentFile !== null) {
@@ -152,7 +152,7 @@ export class FileDropDirective implements OnInit {
     //
     // Stops the drag/drop events propagating
     //
-    private preventAndStopEventPropagation(event: DragEvent): void {
+    private preventAndStopEventPropagation(event: Event): void {
         event.preventDefault();
         event.stopPropagation();
     }
@@ -160,7 +160,7 @@ export class FileDropDirective implements OnInit {
     //
     // Returns the file dragged into the directive
     //
-    private getDataTransferObject(event: DragEvent | any): DataTransfer {
+    private getDataTransferObject(event: Event | any): DataTransfer {
         return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
     }
 }
