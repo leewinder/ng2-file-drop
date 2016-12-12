@@ -128,10 +128,11 @@ export class MyCustomComponent {
 You can specify a set of callbacks that will trigger when a drag event happens, which can be seen in [size-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/size-validation).
 
 The available callbacks are
-- When a file is initially dragged into the target space
-- When a file is dragged out of the target space
-- When a file is dropped and it is _accepted_ by 'ng2-file-drop'
-- When a file is dropped and it is _rejected_ by 'ng2-file-drop'
+- When a file (or many files) is initially dragged into the target space
+- When a file (or many files) is dragged out of the target space
+- When a file is dropped and it is _accepted_ by 'ng2-file-drop' (when ng2FileDropAcceptMultiple = false)
+- When a file is dropped and it is _rejected_ by 'ng2-file-drop' (when ng2FileDropAcceptMultiple = false)
+- When a file or many files are dropped (when ng2FileDropAcceptMultiple = true)
 
 ```TypeScript
 import { Component } from '@angular/core';
@@ -148,7 +149,16 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop
                 (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
                 (ng2FileDropFileAccepted)="dragFileAccepted($event)" (ng2FileDropFileRejected)="dragFileRejected($event)"
                 
-             </div>`
+             </div>
+             
+             <div ng2FileDrop class="custom-component-drop-zone"
+
+                [ng2FileDropAcceptMultiple]="true" 
+
+                (ng2FileDropHoverStart)="dragFileOverStart()" (ng2FileDropHoverEnd)="dragFileOverEnd()"
+                (ng2FileDropFilesDropped)="dragFilesDropped($event)"
+                
+             </div>`,
   
   styles: [`
     .custom-component-drop-zone {
@@ -173,6 +183,10 @@ export class MyCustomComponent {
 
   // File being dragged has been dropped and has been rejected
   private dragFileRejected(rejectedFile: Ng2FileDropRejectedFile) {
+  }
+
+  // Files being dragged have been dropped.
+  private dragFilesDropped(droppedFile: Ng2FileDropFilesDropped) {
   }
 }
 ```
@@ -240,6 +254,35 @@ export class ImageValidationComponent {
     if (rejectedFilerejectionReason === Ng2FileDropRejections.FileType) {
     } else if (rejectedFilerejectionReason === Ng2FileDropRejections.FileSize) {
     } else {
+    }
+  }
+}
+```
+
+### Responding to multiple Dropped Files
+When ng2FileDropAcceptMultiple is set to true the callbacks ng2FileDropFileAccepted and ng2FileDropFileRejected will not be emitted. Instead
+ng2FileDropFilesDropped will be emitted when one or many files are dropped.
+
+```TypeScript
+import { Component } from '@angular/core';
+import { Ng2FileDropFilesDropped }  from 'ng2-file-drop';
+
+@Component({
+  ...
+})
+export class ImageValidationComponent {
+
+  ...
+
+  // Takes the dropped image and displays it in the image tag
+  private dragFilesDropped(droppedFiles: Ng2FileDropFilesDropped) {
+
+    if (droppedFiles.accepted.length > 0) {
+      ...
+    }
+
+    if (droppedFiles.rejected.length > 0) {
+      ...
     }
   }
 }
