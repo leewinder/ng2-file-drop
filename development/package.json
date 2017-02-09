@@ -1,6 +1,6 @@
 {
     "name": "ng2-file-drop",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "license": "MIT",
     "description": "An Angular 2 module for simple desktop file drag and drop",
     "private": false,
@@ -30,9 +30,9 @@
         "typings": "typings"
     },
     "dependencies": {
-        "@angular/core": "2.0.0",
-        "@angular/common": "2.0.0",
-        "@angular/platform-browser": "2.0.0",
+        "@angular/core": "^2.0.0",
+        "@angular/common": "^2.0.0",
+        "@angular/platform-browser": "^2.0.0",
         "core-js": "^2.4.1",
         "rxjs": "5.0.0-beta.12",
         "systemjs": "0.19.27",
