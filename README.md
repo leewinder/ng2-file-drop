@@ -32,7 +32,7 @@ ng2-file-drop has the following additional dependancies
 ## Installation
 1. Add the package to your 'dependencies' list in `package.json` and run `npm install`
 
-  `"ng2-file-drop": "^0.2.1"`
+  `"ng2-file-drop": "^0.2.2"`
   
   Optionally, you can manually install the package using the npm command line
 
@@ -326,6 +326,9 @@ export class MyCustomComponent {
 <br>
 
 ## Change Log
+
+### 0.2.2
+* Documentation update
 
 ### 0.2.1
 * Support for Angular versions 2.0.0 - 2.4.7
