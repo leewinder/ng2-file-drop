@@ -1,6 +1,6 @@
 {
   "name": "ng2-file-drop-samples",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
