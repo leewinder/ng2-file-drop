@@ -33,7 +33,7 @@ ng2-file-drop has the following additional dependancies
 ## Installation
 1. Add the package to your 'dependencies' list in `package.json` and run `npm install`
 
-  `"ng2-file-drop": "^1.0.0"`
+  `"ng2-file-drop": "^1.1.0"`
   
   Optionally, you can manually install the package using the npm command line
 
@@ -376,6 +376,9 @@ export class MyCustomComponent {
 <br>
 
 ## Change Log
+
+### 1.1.0
+* Added peerDependancies to the npm package to support both npm2 and npm3
 
 ### 1.0.0
 * Added support for dropping multiple files - [#25](https://github.com/leewinder/ng2-file-drop/pull/25)
