@@ -4,7 +4,7 @@ import { Ng2FileDropAcceptedFile, Ng2FileDropRejectedFile }  from 'ng2-file-drop
 
 @Component({
 
-    moduleId: module.id,
+    moduleId: __filename,
     selector: 'size-validation',
 
     templateUrl: 'size-validation.component.html',

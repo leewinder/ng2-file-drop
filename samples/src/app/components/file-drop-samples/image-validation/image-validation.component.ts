@@ -4,7 +4,7 @@ import { Ng2FileDropAcceptedFile }  from 'ng2-file-drop';
 
 @Component({
 
-    moduleId: module.id,
+    moduleId: __filename,
     selector: 'image-validation',
 
     templateUrl: 'image-validation.component.html',
