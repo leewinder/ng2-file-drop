@@ -6,3 +6,4 @@ export { RejectionReasons as Ng2FileDropRejections } from './properties/rejectio
 
 export { AcceptedFile as Ng2FileDropAcceptedFile } from './dropped-files/accepted-file';
 export { RejectedFile as Ng2FileDropRejectedFile } from './dropped-files/rejected-file';
+export { DroppedFiles as Ng2FileDropFiles } from './dropped-files/dropped-files';
