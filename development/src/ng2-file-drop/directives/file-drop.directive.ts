@@ -6,6 +6,7 @@ import { RejectionReasons } from '../properties/rejection-reasons';
 
 import { AcceptedFile } from '../dropped-files/accepted-file';
 import { RejectedFile } from '../dropped-files/rejected-file';
+import { DroppedFiles } from '../dropped-files/dropped-files';
 
 //
 // Directive to support dragging and dropping and element onto a div
@@ -24,7 +25,11 @@ export class FileDropDirective implements OnInit {
     public ng2FileDropFileAccepted: EventEmitter<AcceptedFile> = new EventEmitter<AcceptedFile>();
     @Output()
     public ng2FileDropFileRejected: EventEmitter<RejectedFile> = new EventEmitter<RejectedFile>();
+    @Output()
+    public ng2FileDropFilesDropped: EventEmitter<DroppedFiles> = new EventEmitter<DroppedFiles>();
 
+    @Input()
+    public ng2FileDropAcceptMultiple: boolean;
     @Input()
     public ng2FileDropSupportedFileTypes: string[];
     @Input()
@@ -124,20 +129,35 @@ export class FileDropDirective implements OnInit {
             // Update our data
             this.fileService.currentFile = this.getDataTransferObject(event);
 
-            // Get the file
-            let fileData: File = this.fileService.getFileData();
+            if (this.ng2FileDropAcceptMultiple) {
 
-            // Check if our file is valid or not
-            let rejectionReason: RejectionReasons = this.fileService.isFileValid();
-            if (rejectionReason === RejectionReasons.None) {
-                this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
+                // Check if our files are valid or not
+                let droppedFiles: DroppedFiles = this.fileService.verifyFiles();
+
+                this.ng2FileDropFilesDropped.emit(droppedFiles);
                 if (this.dropZoneStyle !== null) {
-                    this.dropZoneStyle.onFileAccepted();
+                    if (droppedFiles.areAllAccepted()) {
+                        this.dropZoneStyle.onFileAccepted();
+                    } else {
+                        this.dropZoneStyle.onFileRejected();
+                    }
                 }
             } else {
-                this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
-                if (this.dropZoneStyle !== null) {
-                    this.dropZoneStyle.onFileRejected();
+
+                // Check if our file is valid or not
+                let rejectionReason: RejectionReasons = this.fileService.isFileValid();
+
+                let fileData: File = this.fileService.getFiles()[0];
+                if (rejectionReason === RejectionReasons.None) {
+                    this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
+                    if (this.dropZoneStyle !== null) {
+                        this.dropZoneStyle.onFileAccepted();
+                    }
+                } else {
+                    this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
+                    if (this.dropZoneStyle !== null) {
+                        this.dropZoneStyle.onFileRejected();
+                    }
                 }
             }
 
