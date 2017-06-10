@@ -22,17 +22,18 @@ An Angular 2 module for simple desktop file drag and drop with automatic file va
 ![](https://cloud.githubusercontent.com/assets/1649415/18009234/3c180d48-6ba3-11e6-9f21-c71d3b1f7bd8.gif)
 
 ## Dependancies
-Currently built against Angular 2.4.6, but should work with any 2.x version.
+Currently built against Angular ^4.1.3 and Typescript ^2.3.2
 
 ng2-file-drop has the following additional dependancies
 - [TsLerp](https://www.npmjs.com/package/tslerp): Typescript library for lerping single and multi-sample data sets over time
+- [Typings](https://www.npmjs.com/package/typings): `npm install typings --global`
 
 <br>
 
 ## Installation
 1. Add the package to your 'dependencies' list in `package.json` and run `npm install`
 
-  `"ng2-file-drop": "^0.2.2"`
+  `"ng2-file-drop": "^1.0.0"`
   
   Optionally, you can manually install the package using the npm command line
 
@@ -375,6 +376,11 @@ export class MyCustomComponent {
 <br>
 
 ## Change Log
+
+### 1.0.0
+* Added support for dropping multiple files - [#25](https://github.com/leewinder/ng2-file-drop/pull/25)
+* Updated to Angular ^4.1.3 and Typescript ^2.3.2 - [#26](https://github.com/leewinder/ng2-file-drop/pull/26)
+* Altered used of moduleId for Webpack support - [#27](https://github.com/leewinder/ng2-file-drop/pull/27)
 
 ### 0.2.2
 * Documentation update
