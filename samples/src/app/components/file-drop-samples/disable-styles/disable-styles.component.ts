@@ -4,7 +4,7 @@ import { Ng2FileDropAcceptedFile }  from 'ng2-file-drop';
 
 @Component({
 
-    moduleId: module.id,
+    moduleId: __filename,
     selector: 'disable-styles',
 
     templateUrl: 'disable-styles.component.html',
