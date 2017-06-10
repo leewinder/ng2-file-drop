@@ -108,7 +108,7 @@ import { Component } from '@angular/core';
   selector: 'my-custom-component',
     
   // Simply add the 'ng2FileDrop' selector to the target div
-  template: `<div ng2FileDrop class="custom-component-drop-zone"</div>`
+  template: `<div ng2FileDrop class="custom-component-drop-zone"></div>`
   
   // Define the size of the file drop zone
   styles: [`
@@ -122,17 +122,23 @@ export class MyCustomComponent {
 }
 ```
 
+If you want to enable dropping multiple files are once, when defining ng2FileDrop, define ng2FileDropAcceptMultiple as an input parameter
+
+```TypeScript
+<div ng2FileDrop ... [ng2FileDropAcceptMultiple]="true"></div>
+```
+
 ### Responding To Events
 ![](https://cloud.githubusercontent.com/assets/1649415/18009474/55532602-6ba4-11e6-9e53-1a9c42f981d9.gif)
 
 You can specify a set of callbacks that will trigger when a drag event happens, which can be seen in [size-validation](https://github.com/leewinder/ng2-file-drop/tree/master/samples/src/app/components/file-drop-samples/size-validation).
 
 The available callbacks are
-- When a file (or many files) is initially dragged into the target space
-- When a file (or many files) is dragged out of the target space
+- When one or more files are initially dragged into the target space
+- When one or more files are dragged out of the target space
 - When a file is dropped and it is _accepted_ by 'ng2-file-drop' (when ng2FileDropAcceptMultiple = false)
 - When a file is dropped and it is _rejected_ by 'ng2-file-drop' (when ng2FileDropAcceptMultiple = false)
-- When a file or many files are dropped (when ng2FileDropAcceptMultiple = true)
+- When one or more files are dropped (when ng2FileDropAcceptMultiple = true)
 
 ```TypeScript
 import { Component } from '@angular/core';
