@@ -1,0 +1,51 @@
+{
+  "name": "ng2-file-drop",
+  "version": "1.1.0",
+  "license": "MIT",
+  "description": "An Angular 2 module for simple desktop file drag and drop",
+  "private": false,
+  "homepage": "https://github.com/leewinder/ng2-file-drop",
+  "author": {
+    "name": "Lee Winder",
+    "email": "lee.winder@gmail.com",
+    "url": "www.leewinder.co.uk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leewinder/ng2-file-drop"
+  },
+  "bugs": {
+    "url": "https://github.com/leewinder/ng2-file-drop"
+  },
+  "keywords": [
+    "angular2",
+    "angular 2",
+    "ng2",
+    "typescript",
+    "drag and drop",
+    "file drop"
+  ],
+  "peerDependencies": {
+    "core-js": "^2.4.1",
+    "rxjs": "^5.5.2",
+    "systemjs": "0.19.27",
+    "zone.js": "^0.8.4"
+  },
+  "dependencies": {
+    "@angular/common": "^5.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/platform-browser": "^5.0.0",
+    "@types/core-js": "^0.9.43",
+    "@types/node": "~6.0.60",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.5.2",
+    "systemjs": "0.19.27",
+    "tslerp": "git+https://github.com/fstasi/tslerp.git",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "concurrently": "^2.2.0",
+    "typescript": "^2.4.2",
+    "tslint": "3.15.1"
+  }
+}
