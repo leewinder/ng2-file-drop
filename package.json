@@ -1,27 +1,22 @@
 {
-  "name": "ng2-file-drop",
-  "version": "1.1.1",
+  "name": "ngx-file-drop",
+  "version": "1.1.2",
   "license": "MIT",
-  "description": "An Angular 2 module for simple desktop file drag and drop",
+  "description": "An Angular 5 module for simple desktop file drag and drop",
   "private": false,
-  "homepage": "https://github.com/leewinder/ng2-file-drop",
   "author": {
-    "name": "Lee Winder",
-    "email": "lee.winder@gmail.com",
-    "url": "www.leewinder.co.uk"
+    "name": "Francesco Stasi",
+    "email": "f.stasi@me.com",
+    "url": "francescostasi.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/leewinder/ng2-file-drop"
+    "url": "https://github.com/fstasi/ngx-file-drop"
   },
   "bugs": {
-    "url": "https://github.com/leewinder/ng2-file-drop"
+    "url": "https://github.com/fstasi/ngx-file-drop"
   },
   "keywords": [
-    "angular2",
-    "angular 2",
-    "ng2",
-    "typescript",
     "drag and drop",
     "file drop"
   ],
