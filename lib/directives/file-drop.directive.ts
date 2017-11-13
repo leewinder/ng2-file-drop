@@ -17,29 +17,20 @@ import { DroppedFiles } from '../dropped-files/dropped-files';
 })
 export class FileDropDirective implements OnInit {
 
-    @Output()
-    public ng2FileDropHoverStart: EventEmitter<any> = new EventEmitter<any>();
-    @Output()
-    public ng2FileDropHoverEnd: EventEmitter<any> = new EventEmitter<any>();
-    @Output()
-    public ng2FileDropFileAccepted: EventEmitter<AcceptedFile> = new EventEmitter<AcceptedFile>();
-    @Output()
-    public ng2FileDropFileRejected: EventEmitter<RejectedFile> = new EventEmitter<RejectedFile>();
-    @Output()
-    public ng2FileDropFilesDropped: EventEmitter<DroppedFiles> = new EventEmitter<DroppedFiles>();
+    @Output() ng2FileDropHoverStart: EventEmitter<any> = new EventEmitter<any>();
+    @Output() ng2FileDropHoverEnd: EventEmitter<any> = new EventEmitter<any>();
+    @Output() ng2FileDropFileAccepted: EventEmitter<AcceptedFile> = new EventEmitter<AcceptedFile>();
+    @Output() ng2FileDropFileRejected: EventEmitter<RejectedFile> = new EventEmitter<RejectedFile>();
+    @Output() ng2FileDropFilesDropped: EventEmitter<DroppedFiles> = new EventEmitter<DroppedFiles>();
 
-    @Input()
-    public ng2FileDropAcceptMultiple: boolean;
-    @Input()
-    public ng2FileDropSupportedFileTypes: string[];
-    @Input()
-    public ng2FileDropMaximumSizeBytes: number;
-    @Input()
-    public ng2FileDropDisableStyles: boolean;
+    @Input() ng2FileDropAcceptMultiple: boolean;
+    @Input() ng2FileDropSupportedFileTypes: string[];
+    @Input() ng2FileDropMaximumSizeBytes: number;
+    @Input() ng2FileDropDisableStyles: boolean;
 
     // Keep track of our dropped files
     private fileService: FileState = new FileState();
-    private dropZoneStyle: DropZoneStyle = null;
+    private dropZoneStyle: DropZoneStyle | null = null;
 
     //
     // Constructor requires an element reference that instantiated this directive
@@ -147,16 +138,21 @@ export class FileDropDirective implements OnInit {
                 // Check if our file is valid or not
                 let rejectionReason: RejectionReasons = this.fileService.isFileValid();
 
-                let fileData: File = this.fileService.getFiles()[0];
-                if (rejectionReason === RejectionReasons.None) {
-                    this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
-                    if (this.dropZoneStyle !== null) {
-                        this.dropZoneStyle.onFileAccepted();
-                    }
-                } else {
-                    this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
-                    if (this.dropZoneStyle !== null) {
-                        this.dropZoneStyle.onFileRejected();
+                let fileData: File;
+                let files = this.fileService.getFiles();
+                if (files !== null) {
+                    fileData = files[0];
+                
+                    if (rejectionReason === RejectionReasons.None) {
+                        this.ng2FileDropFileAccepted.emit(new AcceptedFile(fileData));
+                        if (this.dropZoneStyle !== null) {
+                            this.dropZoneStyle.onFileAccepted();
+                        }
+                    } else {
+                        this.ng2FileDropFileRejected.emit(new RejectedFile(fileData, rejectionReason));
+                        if (this.dropZoneStyle !== null) {
+                            this.dropZoneStyle.onFileRejected();
+                        }
                     }
                 }
             }

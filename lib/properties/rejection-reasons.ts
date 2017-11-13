@@ -4,9 +4,7 @@
 //
 export enum RejectionReasons {
     None,
-
     FileType,
     FileSize,
-
     Unknown,
 }

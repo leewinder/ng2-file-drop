@@ -1,46 +1,38 @@
 {
-  "name": "ngx-file-drop",
-  "version": "1.1.2",
+  "name": "ng-file-drop",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "An Angular 5 module for simple desktop file drag and drop",
-  "private": false,
   "author": {
     "name": "Francesco Stasi",
-    "email": "f.stasi@me.com",
-    "url": "francescostasi.com"
+    "email": "f.stasi@me.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fstasi/ngx-file-drop"
+    "url": "https://github.com/fstasi/ng-file-drop"
   },
-  "bugs": {
-    "url": "https://github.com/fstasi/ngx-file-drop"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "drag and drop",
-    "file drop"
-  ],
   "peerDependencies": {
-    "core-js": "^2.4.1",
-    "rxjs": "^5.5.2",
-    "systemjs": "0.19.27",
     "zone.js": "^0.8.4"
   },
   "dependencies": {
     "@angular/common": "^5.0.0",
     "@angular/core": "^5.0.0",
     "@angular/platform-browser": "^5.0.0",
-    "@types/core-js": "^0.9.43",
-    "@types/node": "~6.0.60",
-    "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
-    "systemjs": "0.19.27",
-    "tslerp": "git+https://github.com/fstasi/tslerp.git",
+    "core-js": "^2.4.1",
+    "tslerp2": "^2.0.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "concurrently": "^2.2.0",
-    "typescript": "^2.4.2",
-    "tslint": "3.15.1"
+    "@types/node": "^8.0.51",
+    "tslint": "^5.8.0",
+    "typescript": "^2.4.2"
   }
 }

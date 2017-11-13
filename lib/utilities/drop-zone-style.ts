@@ -1,7 +1,7 @@
 import { ElementRef, Renderer } from '@angular/core';
 import { ColorIndex } from '../properties/color-index';
 
-import { TsLerp, TsLerpStyle, TsLerpTransition } from 'tslerp';
+import { TsLerp, TsLerpStyle, TsLerpTransition } from 'tslerp2';
 
 //
 // Manages the presentation of the drop zone

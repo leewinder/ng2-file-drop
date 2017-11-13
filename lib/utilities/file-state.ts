@@ -9,18 +9,18 @@ import { DroppedFiles } from '../dropped-files/dropped-files';
 export class FileState {
 
     // Private properties
-    private currentObject: DataTransfer = null;
+    private currentObject: DataTransfer | null = null;
 
-    private supportedFileTypes: string[] = null;
+    private supportedFileTypes: string[] | null = null;
     private maximumFileSizeInBytes: number = 0;
 
     //
     // Provides access to the current file object
     //
-    public get currentFile(): DataTransfer {
+    public get currentFile(): DataTransfer | null {
         return this.currentObject;
     }
-    public set currentFile(thisFile: DataTransfer) {
+    public set currentFile(thisFile: DataTransfer | null) {
         this.currentObject = thisFile;
         if (this.currentObject !== null) {
             this.currentObject.dropEffect = 'copy';
@@ -38,7 +38,7 @@ export class FileState {
     //
     // Returns the actual files present in the transfer object
     //
-    public getFiles(): FileList {
+    public getFiles(): FileList | null {
 
         // We need an object
         if (this.currentObject === null) {
@@ -59,7 +59,7 @@ export class FileState {
     public isFileValid(): RejectionReasons {
 
         // Get the file
-        let currentFiles: FileList = this.getFiles();
+        let currentFiles: FileList | null = this.getFiles();
         if (currentFiles === null) {
             return RejectionReasons.Unknown;
         }
@@ -91,7 +91,7 @@ export class FileState {
     public verifyFiles(): DroppedFiles {
 
         // Get the files
-        let currentFiles: FileList = this.getFiles();
+        let currentFiles: FileList | null = this.getFiles();
         if (currentFiles === null) {
             return new DroppedFiles();
         }
