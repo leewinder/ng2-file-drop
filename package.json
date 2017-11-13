@@ -1,0 +1,43 @@
+{
+  "name": "ng-file-drop",
+  "version": "4.0.2",
+  "license": "MIT",
+  "description": "An Angular 4 module for simple desktop file drag and drop",
+  "author": {
+    "name": "Francesco Stasi",
+    "email": "f.stasi@me.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fstasi/ng-file-drop"
+  },
+  "scripts": {
+    "clean": "rimraf .tmp && rimraf dist",
+    "transpile": "ngc",
+    "package": "rollup -c",
+    "copy": "cpx './package-dist.json' dist && renamer --find 'package-dist.json' --replace 'package.json' ./dist/*",
+    "build": "npm run clean && npm run transpile && npm run package && npm run copy"
+  },
+  "dependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "core-js": "^2.4.1",
+    "tslerp2": "^2.0.0",
+    "zone.js": "^0.8.4"
+  },
+  "devDependencies": {
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@types/node": "~6.0.60",
+    "codelyzer": "^4.0.1",
+    "cpx": "^1.5.0",
+    "renamer": "^0.6.1",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.41.4",
+    "tslint": "~5.3.2",
+    "typescript": "~2.3.3",
+    "uglify-js": "^2.7.5"
+  }
+}

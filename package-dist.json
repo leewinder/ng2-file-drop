@@ -1,0 +1,36 @@
+{
+    "name": "ng-file-drop",
+    "version": "4.0.2",
+    "license": "MIT",
+    "description": "An Angular 4 module for simple desktop file drag and drop",
+    "author": {
+      "name": "Francesco Stasi",
+      "email": "f.stasi@me.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/fstasi/ng-file-drop"
+    },
+
+    "main": "bundles/ng-file-drop.umd.js",
+    "module": "index.js",
+    "jsnext:main": "index.js",
+    "types": "index.d.ts",
+
+	"keywords": [
+    "file drop",
+		"angular",
+		"angular4",
+		"angular 4"
+	],
+	
+	"peerDependencies": {
+        "@angular/common": "^4.0.0",
+        "@angular/core": "^4.0.0",
+        "@angular/platform-browser": "^4.0.0",
+        "rxjs": "^5.1.0",
+        "core-js": "^2.4.1",
+        "tslerp2": "^2.0.0",
+        "zone.js": "^0.8.4"
+	}
+}
