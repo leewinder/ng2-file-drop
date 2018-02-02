@@ -1,6 +1,6 @@
 {
     "name": "ng2-file-drop",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "license": "MIT",
     "description": "An Angular module for simple desktop file drag and drop",
     "private": false,
