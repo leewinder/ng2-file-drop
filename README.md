@@ -15,7 +15,7 @@
 
 ## Overview
 
-An Angular 2 module for simple desktop file drag and drop with automatic file validation and dynamic style adjustment.
+An Angular module for simple desktop file drag and drop with automatic file validation and dynamic style adjustment.
 
 <br>
 
@@ -376,6 +376,9 @@ export class MyCustomComponent {
 <br>
 
 ## Change Log
+
+### 4.0.0
+* Increased to Version 4 to match the version of Angular this build supports
 
 ### 1.1.0
 * Added peerDependancies to the npm package to support both npm2 and npm3
