@@ -21,7 +21,7 @@ An Angular module for simple desktop file drag and drop with automatic file vali
 
 ![](https://cloud.githubusercontent.com/assets/1649415/18009234/3c180d48-6ba3-11e6-9f21-c71d3b1f7bd8.gif)
 
-## Dependancies
+## Dependencies
 Currently built against Angular ^5.2.3 and Typescript ^2.6.2
 
 ng2-file-drop has the following additional dependancies
