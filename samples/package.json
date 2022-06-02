@@ -16,7 +16,7 @@
   "peerDependencies": {
     "@angular/common": "^5.2.3",
     "@angular/compiler": "^5.2.3",
-    "@angular/core": "^5.2.3",
+    "@angular/core": "^11.0.5",
     "@angular/platform-browser": "^5.2.3",
     "@angular/platform-browser-dynamic": "^5.2.3",
     "bootstrap": "^3.3.7",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@angular/common": "^5.2.3",
     "@angular/compiler": "^5.2.3",
-    "@angular/core": "^5.2.3",
+    "@angular/core": "^11.0.5",
     "@angular/platform-browser": "^5.2.3",
     "@angular/platform-browser-dynamic": "^5.2.3",
     "bootstrap": "^3.3.7",
