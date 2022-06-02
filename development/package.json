@@ -26,7 +26,7 @@
         "file drop"
     ],
     "peerDependencies": {
-        "@angular/core": "^5.2.3",
+        "@angular/core": "^11.0.5",
         "@angular/common": "^5.2.3",
         "@angular/platform-browser": "^5.2.3",
         "core-js": "^2.4.1",
@@ -36,7 +36,7 @@
         "zone.js": "^0.8.4"
     },
     "dependencies": {
-        "@angular/core": "^5.2.3",
+        "@angular/core": "^11.0.5",
         "@angular/common": "^5.2.3",
         "@angular/platform-browser": "^5.2.3",
         "core-js": "^2.4.1",
